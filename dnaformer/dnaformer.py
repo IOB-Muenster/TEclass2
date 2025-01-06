@@ -18,7 +18,7 @@ training_args = TrainingArguments(
     eval_accumulation_steps=config["eval_accumulation_steps"],
     save_strategy=config["evaluation_and_save_strategy"],
     disable_tqdm=config["disable_tqdm"], 
-    dataloader_num_workers=0,
+    dataloader_num_workers=8,
     metric_for_best_model = 'eval_f1',
     load_best_model_at_end=True,
     warmup_steps=config["warmup_steps"],
@@ -32,7 +32,7 @@ training_args = TrainingArguments(
 
 #check for available devices
 if not torch.cuda.is_available():
-    print("No cuda devices found, using device: ", config['device'])
+    print("No cuda devices found, using CPU")
 
 
 def compute_metrics(pred):

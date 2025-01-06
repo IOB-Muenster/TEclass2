@@ -9,24 +9,10 @@ A detailed workflow and the results obtained with this software can be found in 
 ## Requirements
 For running the software, particularly for building TE training models a GPU is required.
 The software requires a [Conda environment]( https://conda.io) and the following packages must be installed (a Conda environment.yml file is provided to facilitate the installation)
-The software was tested with Python 3.10.9 and the following libraries supplied by Conda 23.1.0 (recommended) but can also be provided with Python´ pip tools:
-  - biopython
-  - matplotlib==3.5.1
-  - numpy==1.22.3
-  - pandas==1.4.2
-  - PyYAML==6.0
-  - scikit-learn==1.0.2
-  - scipy==1.8.0
-  - tokenizers==0.11.6
-  - pytorch==1.12.1
-  - torchvision==0.12.0
-  - tqdm==4.63.0
-  - transformers==4.17.0
-  - tensorboardX==2.5
-  - openssl
-  - yaml
+The software was tested with Python 3.10.9 and the following libraries supplied by Conda 23.1.0 (recommended) but can also be provided with Python´s pip.
 ## Installation
 
+### Local
 ```
 git clone https://github.com/IOB-Muenster/TEclass2.git
 cd TEclass2
@@ -34,7 +20,28 @@ conda env create -f environment.yml
 conda activate TEclass2
 ```
 
+### Docker
+The files used are under `./volume/`.
+```
+git clone https://github.com/IOB-Muenster/TEclass2.git
+cd TEclass2
+docker build -t teclass2 -f Dockerfile
+```
+
+
+
 ## Running 
+
+### Notes for Docker
+
+Change and/or copy the files into a separate folder and mount these, such as:
+
+```
+docker run --rm -v ./volume/:/volume teclass2:latest -c /volume/config.yml --database
+docker run --rm -v ./volume/:/volume teclass2:latest -c /volume/config.yml --train
+```
+
+
 ### Preparing the dataset for training
 For training, the dataset must be a FASTA file with labeled TE models, e.g.
 > \>ALUY SINE<br>

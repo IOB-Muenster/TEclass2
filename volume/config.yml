@@ -1,0 +1,85 @@
+####################################
+# Configuration file for TEclass 2 #
+####################################
+
+###BASIC CONFIGURATION
+#Model name as it will be saved in ./TEclass2/models/ directory
+model_name: 'teclass2_query_excerpt'
+#Path where the new models are saved
+model_save_path: '/volume/models'
+
+
+#TE keywords used for classification that must be present when building the library.
+#When using an EMBL file format, this keywords must are read from the Subtype or Type field
+#When using a fasta file format,  the format of the head must be like >$TE_ID $TE_KEYWORD
+te_keywords: ["DNA", "LINE/L1", "RC","SINE"]
+#Local path to the file used for training the model, it accepts EMBL or fasta file formats
+# eg. ./TEclass2/data/$TEs_DATASET.fasta
+te_db_path: '/volume/data/teclass2_query_excerpt.fa'
+
+#Path used to save the formated dataset objects (use the prefix, for *.pkl)
+dataset_path: '/volume/data/databases/teclass2_query_excerpt'
+
+#Set it to None or '' to start or use name of last checkpoint directory
+#from ./TEclass2/models/$model_name/$highest_checkpoint_id
+from_checkpoint: ''
+
+#Classification configuration
+#Classification != Prediction !! (FAQ)
+save_vis_imgs: False    #save also vis images
+low_memory: True      #only predict classes, no additional kmers or motif sequences
+
+
+###CONFIGURATION FOR TRAINING THE MODEL
+#Number of epochs to be used for training the model
+num_train_epochs: 100
+#Number of sequences that are computed in parallel in each step for the training step
+train_batch_size: 8
+#Number of sequences that are computed in parallel in each step for the evaluation step
+eval_batch_size: 16
+#Number of gradient values stored before updating weights
+gradient_accumulation_steps: 10
+#Number of gradient values in the evaluation step stored before updating weights
+eval_accumulation_steps: 10
+#Probability for each sequence to be augmented during training 
+augmentation_probability: 0.55
+#Number of warmup steps using a very low learning rate to tune optimizers
+warmup_steps: 200
+#The penalty score for large weights
+weight_decay: 0.01
+#Use floating point 16-bits (half precision) reduces memory usage. Available with Nvidia Apex tools.
+fp16: False
+
+### Parameters for the  Longformer model
+#The size of the attention window for each token, an even number, ideally 2^x
+attention_window: 64
+#The maximum input length not accounting for dilated kmer embeddings
+max_position_embeddings: 1024
+#Size of k-mer for tokenization , possible values 4, 5 6
+kmer_size: 5  # 4, 5 or 6
+#Dimensionality of the encoder hidden state
+hidden_size: 768
+#Number of subsequent layers
+num_hidden_layers: 8
+#Number of attention heads for each layer
+num_attention_heads: 8
+#Dimensionality of the feed forward layer
+intermediate_size: 3072
+#
+position_embedding_type: 'absolute'
+#
+global_att_tokens: [0, 256]
+# Loss function (weighted cross entropy), 1.0 = weights tied to distribution, 0.0=equal weights
+wce_scaling: 1.0
+
+#FOR model_type=VAE ONLY
+vae_dense_ndim: 16
+vae_latent_ndim: 2
+vae_submodule: 'decoder' # 'decoder' 'encoder' 'complete'
+
+#Global configuration
+evaluation_and_save_strategy: "epoch"
+#Remove progressbar
+disable_tqdm: False
+#Number of steps between logs
+logging_steps: 2

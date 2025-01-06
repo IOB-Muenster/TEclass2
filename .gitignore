@@ -1,0 +1,4 @@
+volume/*/logs/*
+volume/data/*
+volume/*/checkpoint*
+*.pdf
