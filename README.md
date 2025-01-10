@@ -4,7 +4,7 @@ Repository for TEclass2 a TEs models classification into superfamilies software 
 An online version of TEclass2 is available [here]( https://bioinformatics.uni-muenster.de/tools/TEclass2/index.pl?lang=en). It allows the classification of TEs models into the following superfamilies: Copia, Crypton, ERV, Gypsy, hAT, Helitron, Jockey, L1_L2, Maverick, Merlin, SINE, PIF, Pao, RTE, TcMar and Transib with a weighted average F1-score of 0.78.
 
 TEclass2 can be used for training and building Transformer models based on k-mer frequencies and distribution in DNA sequences of TE models. After training a model it can be used for classifying other unknown TEs  models.
-A detailed workflow and the results obtained with this software can be found in the following [publication.](http://)
+A detailed workflow and the results obtained with this software can be found in the following [publication.](https://www.biorxiv.org/content/10.1101/2023.10.13.562246v1)
 
 ## Requirements
 For running the software, particularly for building TE training models a GPU is required.
@@ -90,4 +90,16 @@ DF0280483.1   DNA  0.000   0.000   0.000   1.000
 ```
 
 
+## Citation
+@article {TEClass2,
+	author = {Bickmann, Lucas and Rodriguez, Matias and Jiang, Xiaoyi and Makalowski, Wojciech},
+	title = {TEclass2: Classification of transposable elements using Transformers},
+	elocation-id = {2023.10.13.562246},
+	year = {2023},
+	doi = {10.1101/2023.10.13.562246},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2023/10/16/2023.10.13.562246},
+	eprint = {https://www.biorxiv.org/content/early/2023/10/16/2023.10.13.562246.full.pdf},
+	journal = {bioRxiv}
+}
 
