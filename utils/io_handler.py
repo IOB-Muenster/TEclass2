@@ -6,7 +6,7 @@ def save_dataset(dataset_train, dataset_valid, dataset_test, file_name):
     '''
         Saves a dataset to file_name with corresponding dashes (-train/-valid/-test)
     '''
-    os.makedirs("/".join(file_name.split("/")[:-1]), exists_ok=True)
+    os.makedirs("/".join(file_name.split("/")[:-1]), exist_ok=True)
     with open(file_name+'-train.pkl', 'wb') as f:
         pickle.dump(dataset_train, f)
     with open(file_name+'-valid.pkl', 'wb') as f:
