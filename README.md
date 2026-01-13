@@ -1,10 +1,10 @@
 # TEclass2
 
-Repository for TEclass2 a TEs models classification into superfamilies software based in the machine model Transformer originally described by [Vaswani et al](https://arxiv.org/abs/1706.03762).
+Repository for TEclass2 a TEs models classification into superfamilies software based on the Transformer architecture.
 An online version of TEclass2 is available [here]( https://bioinformatics.uni-muenster.de/tools/TEclass2/index.pl?lang=en). It allows the classification of TEs models into the following superfamilies: Copia, Crypton, ERV, Gypsy, hAT, Helitron, Jockey, L1_L2, Maverick, Merlin, SINE, PIF, Pao, RTE, TcMar and Transib with a weighted average F1-score of 0.78.
 
 TEclass2 can be used for training and building Transformer models based on k-mer frequencies and distribution in DNA sequences of TE models. After training a model it can be used for classifying other unknown TEs  models.
-A detailed workflow and the results obtained with this software can be found in the following [publication.](https://www.biorxiv.org/content/10.1101/2023.10.13.562246v1)
+A detailed workflow and the results obtained with this software can be found in the following [publication.]( https://doi.org/10.3390/biology15010059)
 
 ## Requirements
 For running the software, particularly for building TE training models a GPU is required.
@@ -95,14 +95,16 @@ DF0280483.1   DNA  0.000   0.000   0.000   1.000
 The model data for TEclass2 can be downloaded here: https://bioinformatics.uni-muenster.de/tools/teclass2/models/teclass2-models.tgz
 
 ## Citation
-@article {TEClass2,
-	author = {Bickmann, Lucas and Rodriguez, Matias and Jiang, Xiaoyi and Makalowski, Wojciech},
-	title = {TEclass2: Classification of transposable elements using Transformers},
-	elocation-id = {2023.10.13.562246},
-	year = {2023},
-	doi = {10.1101/2023.10.13.562246},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2023/10/16/2023.10.13.562246},
-	eprint = {https://www.biorxiv.org/content/early/2023/10/16/2023.10.13.562246.full.pdf},
-	journal = {bioRxiv}
-}
+
+	@Article{TEClass2,
+		AUTHOR = {Bickmann, Lucas and Rodriguez, Matias and Jiang, Xiaoyi and Makałowski, Wojciech},
+		TITLE = {Transformer-Based Classification of Transposable Element Consensus Sequences with TEclass2},
+		JOURNAL = {Biology},
+		VOLUME = {15},
+		YEAR = {2026},
+		NUMBER = {1},
+		ARTICLE-NUMBER = {59},
+		PubMedID = {41514900},
+		ISSN = {2079-7737},
+		DOI = {10.3390/biology15010059}
+	}
